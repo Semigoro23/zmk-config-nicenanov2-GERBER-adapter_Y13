@@ -5,6 +5,7 @@
  */
  
 #include "charybdis.dtsi"
+#include <dt-bindings/zmk/input_transform.h>
 
 &default_transform {
     col-offset = <6>;
@@ -71,6 +72,8 @@
     trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball>;
+        // Match the installed sensor: exchange horizontal and vertical movement.
+        input-processors = <&zip_xy_transform INPUT_TRANSFORM_XY_SWAP>;
     };
 };
 
